@@ -21,7 +21,8 @@ public class KataGoHelper {
                              useMetal: Bool = false,
                              coremlModelPath: String? = nil,
                              humanCoremlModelPath: String? = nil,
-                             nnLen: Int, 
+                             configPath: String? = nil,
+                             nnLen: Int,
                              humanSLEnabled: Bool = false) {
         let mainBundle = Bundle.main
         let modelName = "default_model"
@@ -39,7 +40,7 @@ public class KataGoHelper {
         let configName = humanSLEnabled ? "default_human_gtp" : "default_gtp"
         let configExt = "cfg"
 
-        let configPath = mainBundle.path(forResource: configName,
+        let configPath = configPath ?? mainBundle.path(forResource: configName,
                                          ofType: configExt)
 
         let coremlDeviceToUse = useMetal ? 0 : 100
